@@ -9,10 +9,12 @@ app.set('view engine', 'jade');
 app.set("view options", {layout: false});
 app.use(express.static(__dirname + '/public'));
 
+// default route
 app.get('/', function (req, res) {
-    res.render('home.jade');
+    res.render('index.jade');
 });
 
+// global variables
 var messages = [];
 var sockets = [];
 
@@ -22,7 +24,7 @@ io.sockets.on('connection', function (socket) {
 
     io.sockets.emit('newMessage', {
         username: 'admin',
-        message: getSocketName(socket) +' joined'
+        message: getSocketName(socket) + ' joined'
     });
 
     var id = socket.id;
@@ -34,7 +36,7 @@ io.sockets.on('connection', function (socket) {
         io.sockets.emit('getClients', getSocketNames(sockets));
         io.sockets.emit('newMessage', {
             username: 'admin',
-            message: getSocketName(socket) +' left'
+            message: getSocketName(socket) + ' left'
         });
     });
 

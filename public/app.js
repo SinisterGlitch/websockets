@@ -1,5 +1,4 @@
 var socket = io.connect();
-
 var users = [];
 
 socket.on('newMessage', function (data) {

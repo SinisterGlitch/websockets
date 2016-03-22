@@ -1,13 +1,13 @@
 {
-  "name":"Codetrace",
-  "node":"0.1",
-  "author":"Germain Riahi",
+  "name": "Codetrace",
+  "node": "0.1",
+  "author": "Germain Riahi",
   "dependencies": {
-  	"socket.io": "*",
-  	"express": "*",
-  	"jade": "*"
-  	  },
+    "socket.io": "*",
+    "express": "*",
+    "jade": "*"
+  },
   "scripts": {
-  	"start": "node server.js"
+    "start": "node server.js"
   }
 }
