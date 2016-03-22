@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		title Codetrace
+		script(src="/socket.io/socket.io.js")
+		script(src="script.js")
+		link(rel='stylesheet', href='style.css')
+	body
+		div.container
+			div.chat
+				div.messages
+					ul#messages
+				form(onsubmit='send()')
+					div.input
+						div.message
+							input#message
+						div.send
+							button Send
+			div.sidebar
+				ul#users

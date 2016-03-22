@@ -1,0 +1,82 @@
+body, html {
+    background: -webkit-linear-gradient(to left, #2980b9, #094A74);
+    background: linear-gradient(to left, #2980b9, #094A74);
+    color: #fdfdfd;
+    height:100%;
+    padding:0;
+    margin:0;
+}
+* {
+    font-family: Verdana, serif;
+}
+input {
+    border:none;
+    padding:15px;
+    width: 100%;
+}
+button {
+    border: none;
+    background: #BD6464;
+    color: white;
+    padding:15px;
+    width: 100%;
+}
+button:hover {
+    background: #82BD64;
+    cursor: pointer;
+    transition: 2s ease background;
+}
+ul {
+    padding: 0;
+    margin:0;
+}
+.container {
+    height:100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.chat {
+    flex: 2;
+    height:100%;
+}
+.messages {
+    background: #fdfdfd;
+    color: black;
+    flex: 1;
+}
+.input {
+    display: flex;
+    flex: 1;
+}
+.message {
+    flex: 1;
+}
+.sidebar {
+    flex: 1;
+    background: -webkit-linear-gradient(to left, #2F2F2F, #2B2B2B);
+    background: linear-gradient(to left, #2F2F2F, #2B2B2B);
+}
+#messages {
+    list-style: none;
+    line-height: 2em;
+    border-bottom: solid 1px #ccc;
+}
+#messages li {
+    border-top:solid 1px #F3F3F3;
+    padding-left: 2em;
+    font-size: 0.8em;
+}
+#users li {
+    flex:1;
+    font-size: 0.8em;
+    border-bottom:solid 1px #444;
+    padding: 0.5em 0.5em 0.5em 2em;
+    list-style: none;
+    line-height: 2em;
+}
+#users li:hover {
+    flex:1;
+    background: #BD6464;
+    cursor: pointer;
+    transition: 2s ease background;
+}
