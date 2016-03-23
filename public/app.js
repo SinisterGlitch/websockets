@@ -1,3 +1,5 @@
+'use strict';
+
 var socket = io.connect();
 var users = [];
 
@@ -43,7 +45,6 @@ function openPrivateChat(username) {
 }
 
 function onPrivateSendClick(username, id) {
-
     socket.emit('addPrivateMessage', {
         message: document.getElementById(id).value,
         username: username

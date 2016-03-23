@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'), app = express();
 var jade = require('jade');
 var http = require('http')
@@ -9,63 +11,44 @@ app.set('view engine', 'jade');
 app.set("view options", {layout: false});
 app.use(express.static(__dirname + '/public'));
 
-// default route
 app.get('/', function (req, res) {
     res.render('index.jade');
 });
 
-// global variables
 var messages = [];
-var sockets = [];
-
 server.listen(16558);
+
 io.sockets.on('connection', function (socket) {
-    sockets.push(socket);
 
     io.sockets.emit('newMessage', {
         username: 'admin',
-        message: getSocketName(socket) + ' joined'
+        message: socket.id + ' joined'
     });
 
-    var id = socket.id;
-    socket.on('disconnect', function () {
-        sockets = sockets.filter(function (socket) {
-            return id != socket.id;
-        });
+    io.sockets.emit('getClients', Object.keys(io.engine.clients));
 
-        io.sockets.emit('getClients', getSocketNames(sockets));
+    socket.on('disconnect', function () {
+        io.sockets.emit('getClients', Object.keys(io.engine.clients));
         io.sockets.emit('newMessage', {
             username: 'admin',
-            message: getSocketName(socket) + ' left'
+            message: socket.id + ' left'
         });
     });
-
-    io.sockets.emit('getClients', getSocketNames(sockets));
 
     socket.on('addMessage', function (message) {
         if (message) {
             messages.push(message);
             io.sockets.emit('newMessage', {
-                username: getSocketName(socket),
+                username: socket.id,
                 message: message
             });
         }
     });
 
     socket.on('addPrivateMessage', function (data) {
-        io.sockets.connected[data.username].emit('newMessage', {
+        io.sockets.connected['/#'+data.username].emit('newMessage', {
             username: data.username,
             message: data.message
         });
     });
 });
-
-function getSocketName(socket) {
-    return socket.id;
-}
-
-function getSocketNames(sockets) {
-    return sockets.map(function (socket) {
-        return getSocketName(socket);
-    });
-}
