@@ -53,12 +53,15 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('addPrivateMessage', function (data) {
-        // do something
+        io.sockets.connected[data.username].emit('newMessage', {
+            username: data.username,
+            message: data.message
+        });
     });
 });
 
 function getSocketName(socket) {
-    return socket.id.substring(5, 15);
+    return socket.id;
 }
 
 function getSocketNames(sockets) {
