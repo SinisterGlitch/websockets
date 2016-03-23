@@ -80,3 +80,8 @@ ul {
     cursor: pointer;
     transition: 2s ease background;
 }
+#users textarea {
+    min-height:100px;
+    width:100%;
+    border:none;
+}

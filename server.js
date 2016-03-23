@@ -51,6 +51,10 @@ io.sockets.on('connection', function (socket) {
             });
         }
     });
+
+    socket.on('addPrivateMessage', function (data) {
+        // do something
+    });
 });
 
 function getSocketName(socket) {
