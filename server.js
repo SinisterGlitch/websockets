@@ -46,9 +46,12 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('addPrivateMessage', function (data) {
-        io.sockets.connected['/#'+data.username].emit('newMessage', {
-            username: data.username,
+        io.sockets.connected['/#'+data.from].emit('newPrivateMessage', {
+            from: data.to,
+            to: data.from,
             message: data.message
         });
+
+        io.sockets.connected['/#'+data.to].emit('newPrivateMessage', data);
     });
 });

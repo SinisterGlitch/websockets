@@ -3,9 +3,9 @@
   "node": "0.1",
   "author": "Germain Riahi",
   "dependencies": {
-    "socket.io": "*",
     "express": "*",
-    "jade": "*"
+    "jade": "*",
+    "socket.io": "*"
   },
   "scripts": {
     "start": "node server.js"

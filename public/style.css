@@ -78,8 +78,10 @@ ul {
     flex:1;
     cursor: pointer;
 }
-#users textarea {
-    min-height:100px;
-    width:100%;
-    border:none;
+.private-container {
+    display:flex;
+}
+#users input, #users button {
+    flex:1;
+    width:auto !important;
 }
