@@ -1,13 +1,22 @@
 {
+  "scripts": {
+    "client": "cd src/client && webpack --optimize-minimize",
+    "server": "cd src/server && webpack --optimize-minimize",
+    "start": "node server.js"
+  },
   "name": "Codetrace",
   "node": "0.1",
   "author": "Germain Riahi",
   "dependencies": {
-    "socket.io": "*",
     "express": "*",
-    "jade": "*"
+    "jade": "*",
+    "json-loader": "^0.5.4",
+    "socket.io": "*",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.6.0"
   },
-  "scripts": {
-    "start": "node server.js"
+  "browser": {
+    "fs": false
   }
 }
