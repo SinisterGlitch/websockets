@@ -15,9 +15,9 @@ socket.on('newPrivateMessage', function (data) {
     li.appendChild(document.createTextNode(data.message));
 
     var ul = document.getElementById('input-'+data.from);
-
     if (ul == undefined) {
         openPrivateChat(data.from);
+        ul = document.getElementById('input-'+data.from);
     }
 
     ul.appendChild(li);
@@ -41,7 +41,7 @@ socket.on('getClients', function (usernames) {
 function send() {
     event.preventDefault();
     var input = document.getElementById('message');
-    socket.emit('addMessage', socket.id+ ' : ' +input.value);
+    socket.emit('addMessage', input.value);
     input.value = '';
 }
 

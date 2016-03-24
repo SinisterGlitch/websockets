@@ -21,7 +21,7 @@ server.listen(16558);
 io.sockets.on('connection', function (socket) {
 
     io.sockets.emit('newMessage', {
-        username: 'admin',
+        username: '',
         message: socket.id + ' joined'
     });
 
@@ -30,7 +30,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('disconnect', function () {
         io.sockets.emit('getClients', Object.keys(io.engine.clients));
         io.sockets.emit('newMessage', {
-            username: 'admin',
+            username: '',
             message: socket.id + ' left'
         });
     });
